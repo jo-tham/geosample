@@ -16,3 +16,4 @@ pep8==1.7.0
 rope==0.10.3
 yapf==0.15.2
 mypy==0.470
+docutils==0.12
