@@ -12,6 +12,7 @@ with open('HISTORY.rst') as history_file:
 requirements = [
     'Click>=6.0',
     'shapely>=1.5.17',
+    'geojson>=1.3.3',
 ]
 
 test_requirements = [
@@ -36,6 +37,10 @@ setup(
     license="Apache Software License 2.0",
     zip_safe=False,
     keywords='geosample',
+    entry_points = '''
+      [console_scripts]
+      geosample=geosample.cli:main
+      ''',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',

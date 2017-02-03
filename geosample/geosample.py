@@ -2,7 +2,7 @@
 import random
 from math import floor
 from typing import List
-from shapely.geometry import shape, Point
+from shapely.geometry import shape, Point, MultiPoint
 
 
 def _random_point_in_shape(shape) -> Point:
@@ -48,7 +48,7 @@ def _sample_shapes(shapes, n, **kwargs):
     return flat
 
 
-def sample_geojson(features, n: int):
+def sample_geojson(features, n: int) -> MultiPoint:
     """ Sample geojson data
 
     Given a dictionary built from geojson, a list of shapely points are
@@ -65,4 +65,4 @@ def sample_geojson(features, n: int):
         if f['geometry']['type'].lower() == 'polygon'
     ]
 
-    return _sample_shapes(shapes, n)
+    return MultiPoint(_sample_shapes(shapes, n))

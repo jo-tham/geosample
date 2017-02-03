@@ -8,11 +8,11 @@ test_geosample
 Tests for `geosample` module.
 """
 
-import pytest
-
+import os
+import json
 from contextlib import contextmanager
+import pytest
 from click.testing import CliRunner
-
 from geosample.geosample import (
     sample_geojson,
     _random_point_in_shape,
@@ -20,7 +20,7 @@ from geosample.geosample import (
     _allocate_samples_to_shapes,
     _sample_shapes,
 )
-from geosample import cli
+from geosample.cli import main
 
 
 def test__random_point_in_shape(shape):
@@ -60,11 +60,18 @@ def test__reproject_shapes(shapes):
     assert False
 
 
-def test_command_line_interface():
+def test_cli(geojson):
+    input_data_path = './areas.geojson'
+    expected_output_path = os.path.join('sample.geojson')
     runner = CliRunner()
-    result = runner.invoke(cli.main)
-    assert result.exit_code == 0
-    assert 'geosample.cli.main' in result.output
-    help_result = runner.invoke(cli.main, ['--help'])
-    assert help_result.exit_code == 0
-    assert '--help  Show this message and exit.' in help_result.output
+
+    with runner.isolated_filesystem():
+        with open(input_data_path, 'w') as of:
+            of.write(json.dumps(geojson))
+
+        result = runner.invoke(main, [
+            input_data_path
+        ])
+
+        assert result.exit_code == 0
+        assert os.path.exists(expected_output_path)
