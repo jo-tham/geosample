@@ -8,7 +8,7 @@ coverage==4.3.4
 Sphinx==1.5.2
 cryptography==1.7.2
 PyYAML==3.12
-pytest==2.9.2
+pytest==3.0.6
 autopep8==1.2.4
 importmagic==0.1.7
 jedi==0.10.0
