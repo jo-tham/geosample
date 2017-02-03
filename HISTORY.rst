@@ -7,7 +7,7 @@ History
 
 * Distribution fix
 
-  0.1.0 (2017-02-02)
+0.1.0 (2017-02-02)
 ------------------
 
 * First release on PyPI.
