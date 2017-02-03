@@ -7,7 +7,7 @@ tox==2.5.0
 coverage==4.3.4
 Sphinx==1.5.2
 cryptography==1.7.2
-PyYAML==3.11
+PyYAML==3.12
 pytest==2.9.2
 autopep8==1.2.4
 importmagic==0.1.7
