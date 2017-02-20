@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 import random
 from math import floor
-from typing import List
+from typing import List, Any
 from shapely.geometry import shape, Point, MultiPoint
 
 
-def _random_point_in_shape(shape) -> Point:
+def _random_point_in_shape(shape): # type: (Any) -> Point
     minx, miny, maxx, maxy = shape.bounds
 
     while True:
@@ -15,11 +15,11 @@ def _random_point_in_shape(shape) -> Point:
             return p
 
 
-def _sample_shape(shape, n: int) -> List[Point]:
+def _sample_shape(shape, n): # type: (Any, int) -> List[Point]
     return [_random_point_in_shape(shape) for i in range(n)]
 
 
-def _allocate_samples_to_shapes(shapes: List, n: int) -> List[int]:
+def _allocate_samples_to_shapes(shapes, n): # type: (List, int) -> List[int]
     """ Allocate total number of samples to shapes
 
     :param shapes:
@@ -48,7 +48,7 @@ def _sample_shapes(shapes, n, **kwargs):
     return flat
 
 
-def sample_geojson(features, n: int) -> MultiPoint:
+def sample_geojson(features, n): # type: (Any, int) -> MultiPoint
     """ Sample geojson data
 
     Given a dictionary built from geojson, a list of shapely points are
