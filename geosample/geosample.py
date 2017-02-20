@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
+from __future__ import division
 import random
 from math import floor
-from typing import List, Any
+from typing import List, Any #pylint: disable=unused-import
 from shapely.geometry import shape, Point, MultiPoint
 
 
