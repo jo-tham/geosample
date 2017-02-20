@@ -13,6 +13,7 @@ requirements = [
     'Click>=6.0',
     'shapely>=1.5.17',
     'geojson>=1.3.3',
+    'typing>=3.5.3.0',
 ]
 
 test_requirements = [
