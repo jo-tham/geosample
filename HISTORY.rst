@@ -3,7 +3,7 @@ History
 =======
 
 
-0.2.0 (2017-02-02)
+0.2.1 (2017-02-22)
 ------------------
 
 * Use comment style type annotations for compatibility with python2.
