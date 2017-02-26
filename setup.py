@@ -22,7 +22,7 @@ test_requirements = [
 
 setup(
     name='geosample',
-    version='0.2.1',
+    version='0.3.0',
     description="Sample locations from geospatial inputs",
     long_description=readme + '\n\n' + history,
     author="Jotham Apaloo",
