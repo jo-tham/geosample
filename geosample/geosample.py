@@ -49,7 +49,7 @@ def _sample_shapes(shapes, n, **kwargs):
     return flat
 
 
-def sample_geojson(features, n): # type: (Any, int) -> MultiPoint
+def sample_geojson(features, n, seed=1234): # type: (Any, int, int) -> MultiPoint
     """ Sample geojson data
 
     Given a dictionary built from geojson, a list of shapely points are
@@ -59,8 +59,9 @@ def sample_geojson(features, n): # type: (Any, int) -> MultiPoint
 
     :param features: feature data in a dictionary read from geojson
     :param n: sample size
-
+    :param seed: random seed
     """
+    random.seed(a=seed)
     shapes = [
         shape(f['geometry']) for f in features['features']
         if f['geometry']['type'].lower() == 'polygon'

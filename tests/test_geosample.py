@@ -10,7 +10,6 @@ Tests for `geosample` module.
 
 import os
 import json
-from contextlib import contextmanager
 import pytest
 from click.testing import CliRunner
 from geosample.geosample import (
@@ -36,10 +35,10 @@ def test__sample_shape(shape):
 
 def test__allocate_samples_to_shapes(shapes):
     result = _allocate_samples_to_shapes(shapes, 4)
-    assert result == [2,2]
+    assert result == [2, 2]
 
     result = _allocate_samples_to_shapes(shapes, 5)
-    assert result == [2,3] or result == [3,2] or result == [2,2]
+    assert result == [2, 3] or result == [3, 2] or result == [2, 2]
 
 
 def test__sample_shapes(shapes):
@@ -52,6 +51,15 @@ def test_sample_geojson(geojson):
     n = 1400
     result = sample_geojson(geojson, n)
     assert abs(len(result) - n) < 3
+
+
+def test_sample_geojson_seed(geojson):
+    n = 100
+    result = sample_geojson(geojson, n, seed=1)
+    result_same = sample_geojson(geojson, n, seed=1)
+    result_different = sample_geojson(geojson, n, seed=2)
+    assert result == result_same
+    assert result != result_different
 
 
 @pytest.mark.skip(reason='TODO')
@@ -70,7 +78,10 @@ def test_cli(geojson):
             of.write(json.dumps(geojson))
 
         result = runner.invoke(main, [
-            input_data_path
+            '-n', 12,
+            '-o', expected_output_path,
+            '-s', 1234,
+            input_data_path,
         ])
 
         assert result.exit_code == 0
