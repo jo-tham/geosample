@@ -14,6 +14,6 @@ autopep8==1.2.4
 importmagic==0.1.7
 jedi==0.10.0
 pep8==1.7.0
-rope==0.10.3
+rope==0.11.0
 yapf==0.15.2
 docutils==0.12
